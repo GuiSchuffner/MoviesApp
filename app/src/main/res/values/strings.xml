@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MoviesApp</string>
+    <string name="start_year">Start year: </string>
+    <string name="end_year">End year: </string>
+    <string name="year">Year:</string>
+    <string name="number_of_episodes">Number of episodes: </string>
 </resources>

@@ -14,7 +14,7 @@ class InitialFragment : Fragment() {
     private var _binding: InitialFragmentBinding? = null
     private val binding: InitialFragmentBinding get() = _binding!!
     private val initialFragmentViewModel: InitialFragmentViewModel
-        by viewModel<InitialFragmentViewModel>()
+        by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,9 +28,8 @@ class InitialFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.insertTitleName.addTextChangedListener {
-            initialFragmentViewModel.setPlayerId(it.toString())
+            initialFragmentViewModel.setMovies(it.toString())
         }
-
         binding.searchButton.setOnClickListener {
             initialFragmentViewModel.onSearchButtonClicked()
         }

@@ -1,7 +1,8 @@
-package com.example.moviesapp.initial.APIs
+package com.example.moviesapp.apis
 
+import com.example.moviesapp.initial.data.model.Movies
+import com.example.moviesapp.initial.data.model.MoviesApiResponse
 import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -12,19 +13,19 @@ import retrofit2.http.Query
 interface MoviesApi {
 
     @Headers(
-        "X-RapidAPI-Key: b30e63bc29msh8e8ee2e35e96f94p1be304jsnd7f67794f8e0",
-        "X-RapidAPI-Host: online-movie-database.p.rapidapi.com"
+        "X-RapidAPI-Key: $API_KEY",
+        "X-RapidAPI-Host: $API_HOST"
     )
     @GET("title/find")
     suspend fun findTitle(
         @Query("q") q: String
-    ): Response<ResponseBody>
+    ): Response<MoviesApiResponse>
 
     companion object{
         private const val BASE_URL="https://online-movie-database.p.rapidapi.com/"
         private const val API_KEY = "b30e63bc29msh8e8ee2e35e96f94p1be304jsnd7f67794f8e0"
         private const val API_HOST = "online-movie-database.p.rapidapi.com"
-        fun create(): MoviesApi{
+        fun create(): MoviesApi {
             val client = OkHttpClient().newBuilder()
                 .build()
             return Retrofit.Builder()
